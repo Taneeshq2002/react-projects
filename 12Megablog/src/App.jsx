@@ -13,29 +13,28 @@ function App() {
     authService
       .getCurrentUser()
       .then((userData) => {
+        console.log(userData);
         if (userData) {
           dispatch(login({ userData }));
         } else {
-          console.log("Data");
           dispatch(logout());
         }
       })
       .finally(() => setLoading(false));
   }, []);
-  return loading ? (
+  return !loading ? (
     <div className="min-h-screen flex flex-wrap content-between bg-gray-400">
       <div className="w-full block">
         <Header>
           <main>
-            <Outlet></Outlet>
+            TODO:
+            <Outlet />
           </main>
         </Header>
         <Footer />
       </div>
     </div>
-  ) : (
-    <div></div>
-  );
+  ) : null;
 }
 
 export default App;
